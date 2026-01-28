@@ -15,6 +15,12 @@ export default function ChatBot() {
 
   const generateResponse = (userMessage: string): string => {
     const lower = userMessage.toLowerCase();
+    // Track & Trace
+    if (lower.match(/track|trace|volgen|pakket volgen|waar is mijn pakket|verzonden/)) {
+      return language === "nl"
+        ? "📬 Je ontvangt je track & trace code per e-mail zodra je bestelling is verzonden. Dit gebeurt meestal binnen 24 uur na je bestelling (op werkdagen). Met deze code kun je je pakket realtime volgen via PostNL of DHL."
+        : "📬 You'll receive your track & trace code by email as soon as your order ships. This usually happens within 24 hours of ordering (on business days). With this code you can track your package in real-time via PostNL or DHL.";
+    }
 
     // Verzending
     if (lower.match(/verzend|shipping|levering|delivery|bezorg|wanneer|lever/)) {
