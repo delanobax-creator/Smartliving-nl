@@ -1,117 +1,83 @@
-import { Lightbulb, Zap, Shield, TrendingUp } from "lucide-react";
+import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 
-const blogPosts = [
-  {
-    slug: "smart-home-beginners",
+const blogPosts: Record<string, { title: string; content: string; category: string; readTime: string; image: string }> = {
+  "smart-home-beginners": {
     title: "Smart Home voor Beginners: Waar Begin Je?",
-    excerpt: "Wil je je huis slimmer maken maar weet je niet waar je moet beginnen? In deze gids leggen we stap voor stap uit hoe je start met smart home.",
-    image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=600&h=400&fit=crop",
     category: "Beginners",
     readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=1200&h=600&fit=crop",
+    content: "Een smart home is een woning waarin apparaten met elkaar verbonden zijn via internet. Je kunt ze bedienen met je smartphone, stem, of ze automatisch laten werken.\n\nWaarom zou je beginnen met smart home? Ten eerste gemak: bedien je verlichting, thermostaat en meer vanaf de bank of onderweg. Ten tweede energiebesparing: slimme thermostaten en verlichting kunnen tot 30% besparen op je energierekening. Ten derde veiligheid: camera's, sensoren en slimme sloten houden je huis veilig.\n\nWaar begin je? Start met het kiezen van je ecosysteem - de meeste mensen kiezen voor Google Home of Amazon Alexa. Begin dan klein met bijvoorbeeld slimme lampen, een slimme stekker, of een slimme thermostaat. Breid langzaam uit en voeg stap voor stap producten toe.\n\nTips voor beginners: zorg voor stabiel WiFi (dit is de basis), kies producten die met elkaar werken, begin met wat je het meeste gebruikt, en stel automatiseringen in voor maximaal gemak.",
   },
-  {
-    slug: "energie-besparen",
+  "energie-besparen": {
     title: "Energie Besparen met Smart Home: Tot 30% Minder Kosten",
-    excerpt: "Ontdek hoe slimme thermostaten, verlichting en stekkers je kunnen helpen om flink te besparen op je energierekening.",
-    image: "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=600&h=400&fit=crop",
     category: "Besparen",
     readTime: "4 min",
+    image: "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=1200&h=600&fit=crop",
+    content: "Met de stijgende energieprijzen zoekt iedereen naar manieren om te besparen. Smart home technologie kan je helpen tot 30% te besparen - zonder in te leveren op comfort.\n\nDe slimme thermostaat is de nummer één investering voor energiebesparing. Hij leert je gedrag en past zich aan, verwarmt alleen wanneer nodig, is bedienbaar op afstand, en geeft inzicht in je verbruik. Gemiddelde besparing: 15-25% op verwarmingskosten.\n\nSlimme verlichting met LED lampen verbruikt al 80% minder dan gloeilampen. Met automatisch uitschakelen, dimmen, bewegingssensoren en tijdschema's bespaar je nog meer. Gemiddelde besparing: 5-10% op elektriciteit.\n\nSlimme stekkers zijn ook belangrijk. Wist je dat apparaten op standby tot 10% van je stroomrekening kunnen kosten? Slimme stekkers schakelen apparaten volledig uit en meten het verbruik per apparaat.\n\nDe terugverdientijd is kort: een slimme thermostaat verdient zichzelf terug in 1-2 jaar, slimme lampen in 2-3 jaar, en slimme stekkers in 1-2 jaar.",
   },
-  {
-    slug: "slimme-verlichting-tips",
+  "slimme-verlichting-tips": {
     title: "10 Tips voor Slimme Verlichting in Huis",
-    excerpt: "Van sfeerverlichting tot automatische routines: haal het maximale uit je slimme lampen met deze praktische tips.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
     category: "Verlichting",
     readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop",
+    content: "Slimme verlichting is meer dan lampen aan en uit zetten met je telefoon. Met deze tips creëer je de perfecte sfeer én bespaar je energie.\n\nTip 1: Kies de juiste kleurtemperatuur. Gebruik 's ochtends koel wit (5000K+) voor energie, overdag neutraal wit (4000K) voor focus, en 's avonds warm wit (2700K) voor ontspanning.\n\nTip 2: Gebruik scènes. Maak vooringestelde scènes voor verschillende momenten zoals 'Goedemorgen', 'Film kijken', 'Feest', en 'Bedtijd'.\n\nTip 3: Automatiseer met zonsopgang en zonsondergang. Zo vergeet je nooit meer het licht.\n\nTip 4: Plaats bewegingssensoren in hal, gang, toilet, trap en garage.\n\nTip 5: Dim voor sfeer én besparing. Een lamp op 50% verbruikt slechts 20% van de energie.\n\nTip 6: Groepeer je lampen per kamer of zone.\n\nTip 7: Gebruik spraakbesturing - sneller dan je telefoon pakken.\n\nTip 8: Gebruik vakantiestand om aanwezigheid te simuleren.\n\nTip 9: Maak een wake-up light voor natuurlijk wakker worden.\n\nTip 10: Sync met entertainment voor filmavonden of feestjes.",
   },
-  {
-    slug: "beveiliging-camera",
+  "beveiliging-camera": {
     title: "Je Huis Beveiligen met Slimme Camera's",
-    excerpt: "Alles wat je moet weten over WiFi camera's, video deurbellen en bewegingsdetectie voor een veilig huis.",
-    image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&h=400&fit=crop",
     category: "Beveiliging",
     readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1200&h=600&fit=crop",
+    content: "Een slim beveiligingssysteem geeft je gemoedsrust - thuis en onderweg.\n\nVoordelen van slimme camera's ten opzichte van traditionele systemen: bekijk live beelden op je telefoon, ontvang meldingen bij beweging, geen dure abonnementen nodig, en eenvoudig zelf te installeren.\n\nEr zijn verschillende soorten camera's. Binnen camera's zijn perfect om je huisdier in de gaten te houden of te checken of de kinderen veilig thuis zijn. Buiten camera's zijn weerbestendig met nachtzicht voor 24/7 bewaking. Video deurbellen laten je zien wie er voor de deur staat en praten met bezoekers via je telefoon.\n\nBelangrijkste locaties voor camera's: voordeur (34% van inbrekers komt hier binnen), achterdeur/tuin, garage, en woonkamer voor overzicht.\n\nSlimme functies om op te letten: bewegingszones om valse meldingen te voorkomen, persoonherkenning om onderscheid te maken tussen mensen en dieren, en twee-weg audio om met bezoekers te praten.\n\nTips voor installatie: plaats camera's op 2-3 meter hoogte, vermijd tegenlicht, test het nachtzicht, en zorg voor stabiel WiFi bij de camera.",
   },
-];
+};
 
-const tips = [
-  { icon: Lightbulb, title: "Begin Klein", description: "Start met één product zoals slimme lampen en breid langzaam uit." },
-  { icon: Zap, title: "Check Compatibiliteit", description: "Zorg dat producten werken met je bestaande systeem (Google/Alexa)." },
-  { icon: Shield, title: "WiFi is Key", description: "Een stabiel WiFi netwerk is essentieel voor smart home producten." },
-  { icon: TrendingUp, title: "Automatiseer", description: "Stel routines in voor maximaal gemak en energiebesparing." },
-];
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = blogPosts[params.slug];
 
-export default function BlogPage() {
+  if (!post) {
+    notFound();
+  }
+
   return (
     <main className="min-h-screen bg-gray-50">
-      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog & Advies</h1>
-          <p className="text-xl text-blue-200">Tips, tricks en inspiratie voor jouw smart home</p>
-        </div>
-      </section>
-
-      <section className="py-12 bg-white border-b">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Quick Tips</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {tips.map((tip, index) => {
-              const Icon = tip.icon;
-              return (
-                <div key={index} className="text-center p-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{tip.title}</h3>
-                  <p className="text-sm text-gray-600">{tip.description}</p>
-                </div>
-              );
-            })}
+      <div className="relative h-64 md:h-96 overflow-hidden">
+        <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center space-x-4 mb-4">
+              <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{post.category}</span>
+              <span className="text-white/80 text-sm">{post.readTime} leestijd</span>
+            </div>
+            <h1 className="text-2xl md:text-4xl font-bold text-white">{post.title}</h1>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Laatste Artikelen</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {blogPosts.map((post) => (
-              <article key={post.slug} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-                <Link href={`/blog/${post.slug}`}>
-                  <div className="aspect-video overflow-hidden">
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-                  </div>
-                </Link>
-                <div className="p-6">
-                  <div className="flex items-center space-x-4 mb-3">
-                    <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">{post.category}</span>
-                    <span className="text-sm text-gray-500">{post.readTime} leestijd</span>
-                  </div>
-                  <Link href={`/blog/${post.slug}`}>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">{post.title}</h3>
-                  </Link>
-                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                  <Link href={`/blog/${post.slug}`} className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                    Lees meer →
-                  </Link>
-                </div>
-              </article>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-8">
+          <ChevronLeft className="w-4 h-4 mr-1" />
+          Terug naar Blog
+        </Link>
+
+        <article className="bg-white rounded-xl shadow-sm p-6 md:p-10">
+          <div className="prose prose-lg max-w-none">
+            {post.content.split("\n\n").map((paragraph, i) => (
+              <p key={i} className="text-gray-600 mb-4">{paragraph}</p>
             ))}
           </div>
-        </div>
-      </section>
+        </article>
 
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Hulp Nodig bij het Kiezen?</h2>
-          <p className="text-xl text-blue-200 mb-8">Ons team staat klaar om je te helpen met persoonlijk advies</p>
-          <Link href="/contact" className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-            Vraag Advies Aan
+        <div className="mt-8 bg-blue-50 rounded-xl p-8 text-center">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Hulp nodig bij het kiezen?</h3>
+          <p className="text-gray-600 mb-4">Ons team staat klaar voor persoonlijk advies</p>
+          <Link href="/contact" className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            Neem Contact Op
           </Link>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
