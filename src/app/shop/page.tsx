@@ -1,15 +1,25 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Star, Filter, X, ChevronDown } from "lucide-react";
 import { products, categories, brands } from "@/lib/products";
 
 export default function ShopPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const searchParams = useSearchParams();
+  const categoryFromUrl = searchParams.get("category");
+  
+  const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl || "all");
   const [selectedBrand, setSelectedBrand] = useState("Alle Merken");
   const [sortBy, setSortBy] = useState("popular");
   const [showFilters, setShowFilters] = useState(false);
+
+  useEffect(() => {
+    if (categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+    }
+  }, [categoryFromUrl]);
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
