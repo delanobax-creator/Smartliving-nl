@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ShoppingCart, Trash2, Plus, Minus, ArrowRight } from "lucide-react";
 import { products } from "@/lib/products";
@@ -11,15 +11,23 @@ interface CartItem {
 }
 
 export default function CartPage() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    { id: "smart-led-starter-kit", quantity: 1 },
-    { id: "smart-display-hub", quantity: 2 },
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const cartProducts = cartItems.map((item) => ({
-    ...products.find((p) => p.id === item.id)!,
-    quantity: item.quantity,
-  })).filter(Boolean);
+  useEffect(() => {
+    const saved = localStorage.getItem("cart");
+    if (saved) {
+      setCartItems(JSON.parse(saved));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const cartProducts = cartItems.map((item) => {
+    const product = products.find((p) => p.id === item.id);
+    return product ? { ...product, quantity: item.quantity } : null;
+  }).filter(Boolean) as (typeof products[0] & { quantity: number })[];
 
   const subtotal = cartProducts.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = subtotal >= 50 ? 0 : 4.95;
