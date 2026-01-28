@@ -22,6 +22,7 @@ export default function CartPage() {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
+    window.dispatchEvent(new Event("cartUpdated"));
   }, [cartItems]);
 
   const cartProducts = cartItems.map((item) => {
@@ -133,9 +134,9 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-3">
+              <Link href="/checkout" className="block w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center mb-3">
                 Afrekenen
-              </button>
+              </Link>
 
               <Link href="/shop" className="block text-center text-blue-600 hover:text-blue-700 font-medium text-sm">
                 Verder winkelen
