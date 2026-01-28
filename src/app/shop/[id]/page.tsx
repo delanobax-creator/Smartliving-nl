@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Star, ShoppingCart, Truck, RotateCcw, Shield, Check, Minus, Plus, ChevronLeft } from "lucide-react";
 import { products } from "@/lib/products";
+
+interface CartItem {
+  id: string;
+  quantity: number;
+}
 
 export default function ProductPage() {
   const params = useParams();
@@ -13,34 +18,40 @@ export default function ProductPage() {
   const [addedToCart, setAddedToCart] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
 
+  const addToCart = () => {
+    const saved = localStorage.getItem("cart");
+    const cart: CartItem[] = saved ? JSON.parse(saved) : [];
+    
+    const existingIndex = cart.findIndex((item) => item.id === product?.id);
+    if (existingIndex >= 0) {
+      cart[existingIndex].quantity += quantity;
+    } else {
+      cart.push({ id: product!.id, quantity });
+    }
+    
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setAddedToCart(true);
+    setTimeout(() => setAddedToCart(false), 2000);
+  };
+
   if (!product) {
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Product niet gevonden</h1>
-          <Link href="/shop" className="text-blue-600 hover:text-blue-700 font-medium">
-            Terug naar shop
-          </Link>
+          <Link href="/shop" className="text-blue-600 hover:text-blue-700 font-medium">Terug naar shop</Link>
         </div>
       </main>
     );
   }
 
-  const handleAddToCart = () => {
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 2000);
-  };
-
-  const relatedProducts = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 4);
+  const relatedProducts = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Link href="/shop" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6">
-          <ChevronLeft className="w-4 h-4 mr-1" />
-          Terug naar shop
+          <ChevronLeft className="w-4 h-4 mr-1" />Terug naar shop
         </Link>
 
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
@@ -48,22 +59,11 @@ export default function ProductPage() {
             <div className="space-y-4">
               <div className="relative aspect-square rounded-xl overflow-hidden bg-gray-100">
                 <img src={product.images[selectedImage]} alt={product.name} className="w-full h-full object-cover" />
-                {product.badge && (
-                  <span className="absolute top-4 left-4 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full">
-                    {product.badge}
-                  </span>
-                )}
+                {product.badge && <span className="absolute top-4 left-4 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full">{product.badge}</span>}
               </div>
-              
               <div className="grid grid-cols-4 gap-3">
                 {product.images.map((img, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedImage(index)}
-                    className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                      selectedImage === index ? "border-blue-600" : "border-gray-200 hover:border-gray-300"
-                    }`}
-                  >
+                  <button key={index} onClick={() => setSelectedImage(index)} className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${selectedImage === index ? "border-blue-600" : "border-gray-200 hover:border-gray-300"}`}>
                     <img src={img} alt={`${product.name} ${index + 1}`} className="w-full h-full object-cover" />
                   </button>
                 ))}
@@ -89,9 +89,7 @@ export default function ProductPage() {
                 {product.originalPrice && (
                   <>
                     <span className="ml-3 text-xl text-gray-500 line-through">€{product.originalPrice.toFixed(2)}</span>
-                    <span className="ml-3 bg-red-100 text-red-700 text-sm font-semibold px-2 py-1 rounded">
-                      -{Math.round((1 - product.price / product.originalPrice) * 100)}%
-                    </span>
+                    <span className="ml-3 bg-red-100 text-red-700 text-sm font-semibold px-2 py-1 rounded">-{Math.round((1 - product.price / product.originalPrice) * 100)}%</span>
                   </>
                 )}
               </div>
@@ -108,8 +106,7 @@ export default function ProductPage() {
                 <ul className="space-y-2">
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-center text-gray-600">
-                      <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      {feature}
+                      <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />{feature}
                     </li>
                   ))}
                 </ul>
@@ -118,49 +115,21 @@ export default function ProductPage() {
               {product.inStock && (
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
                   <div className="flex items-center border border-gray-300 rounded-lg">
-                    <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3 hover:bg-gray-100 transition-colors">
-                      <Minus className="w-4 h-4" />
-                    </button>
+                    <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3 hover:bg-gray-100 transition-colors"><Minus className="w-4 h-4" /></button>
                     <span className="px-4 font-medium">{quantity}</span>
-                    <button onClick={() => setQuantity(quantity + 1)} className="p-3 hover:bg-gray-100 transition-colors">
-                      <Plus className="w-4 h-4" />
-                    </button>
+                    <button onClick={() => setQuantity(quantity + 1)} className="p-3 hover:bg-gray-100 transition-colors"><Plus className="w-4 h-4" /></button>
                   </div>
 
-                  <button
-                    onClick={handleAddToCart}
-                    className={`flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold transition-all ${
-                      addedToCart ? "bg-green-500 text-white" : "bg-blue-600 text-white hover:bg-blue-700"
-                    }`}
-                  >
-                    {addedToCart ? (
-                      <>
-                        <Check className="w-5 h-5" />
-                        <span>Toegevoegd!</span>
-                      </>
-                    ) : (
-                      <>
-                        <ShoppingCart className="w-5 h-5" />
-                        <span>In Winkelwagen</span>
-                      </>
-                    )}
+                  <button onClick={addToCart} className={`flex-1 flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-semibold transition-all ${addedToCart ? "bg-green-500 text-white" : "bg-blue-600 text-white hover:bg-blue-700"}`}>
+                    {addedToCart ? (<><Check className="w-5 h-5" /><span>Toegevoegd!</span></>) : (<><ShoppingCart className="w-5 h-5" /><span>In Winkelwagen</span></>)}
                   </button>
                 </div>
               )}
 
               <div className="border-t pt-6 space-y-3">
-                <div className="flex items-center text-sm text-gray-600">
-                  <Truck className="w-5 h-5 mr-3 text-blue-600" />
-                  Gratis verzending vanaf €50
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <RotateCcw className="w-5 h-5 mr-3 text-blue-600" />
-                  30 dagen retourrecht
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <Shield className="w-5 h-5 mr-3 text-blue-600" />
-                  2 jaar garantie
-                </div>
+                <div className="flex items-center text-sm text-gray-600"><Truck className="w-5 h-5 mr-3 text-blue-600" />Gratis verzending vanaf €50</div>
+                <div className="flex items-center text-sm text-gray-600"><RotateCcw className="w-5 h-5 mr-3 text-blue-600" />30 dagen retourrecht</div>
+                <div className="flex items-center text-sm text-gray-600"><Shield className="w-5 h-5 mr-3 text-blue-600" />2 jaar garantie</div>
               </div>
             </div>
           </div>
