@@ -1,0 +1,42 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
+
+export default function Hero() {
+  const { t } = useLanguage();
+
+  return (
+    <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white overflow-hidden">
+      <div className="absolute inset-0 opacity-20">
+        <img src="https://eu.chat-img.sintra.ai/f9728c88-26b5-4c9d-9aad-be0c86ea1aee/7b9cc41a-f8d8-4e07-92de-945ead9e0d18/image.png?w=1184&h=864" alt="Smart Home Background" className="w-full h-full object-cover" />
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            {t.hero.title} <span className="text-blue-300">{t.hero.titleHighlight}</span>
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-blue-100">{t.hero.subtitle}</p>
+          
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/shop" className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-blue-50 transition-colors group">
+              {t.hero.shopNow}
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link href="/blog" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-900 transition-colors">
+              {t.hero.advice}
+            </Link>
+          </div>
+
+          <div className="mt-12 flex flex-wrap gap-6 text-sm">
+            <div className="flex items-center space-x-2"><span className="text-2xl">✓</span><span>{t.hero.freeShipping}</span></div>
+            <div className="flex items-center space-x-2"><span className="text-2xl">✓</span><span>{t.hero.returns}</span></div>
+            <div className="flex items-center space-x-2"><span className="text-2xl">✓</span><span>{t.hero.expertAdvice}</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
