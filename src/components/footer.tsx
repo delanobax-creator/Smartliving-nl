@@ -19,11 +19,12 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">SmartLiving.nl</span>
             </div>
             <p className="text-sm mb-4">{t.footer.description}</p>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-blue-400 transition-colors"><Facebook className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-blue-400 transition-colors"><Instagram className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-blue-400 transition-colors"><Twitter className="w-5 h-5" /></a>
-            </div>
+                      <div className="flex space-x-4">
+            <a href="https://facebook.com/smartliving.nl" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors"><Facebook className="w-5 h-5" /></a>
+            <a href="https://instagram.com/smartliving.nl" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors"><Instagram className="w-5 h-5" /></a>
+            <a href="https://twitter.com/smartliving_nl" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors"><Twitter className="w-5 h-5" /></a>
+          </div>
+
           </div>
 
           <div>
