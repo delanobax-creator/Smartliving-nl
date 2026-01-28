@@ -5,7 +5,8 @@ export default function BeveiligingCamera() {
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="relative h-64 md:h-96 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1200&h=600&fit=crop" alt="Beveiliging Camera" className="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1558002038-bb4237bb7696
+?w=1200&h=600&fit=crop" alt="Beveiliging Camera" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
           <div className="max-w-4xl mx-auto">
