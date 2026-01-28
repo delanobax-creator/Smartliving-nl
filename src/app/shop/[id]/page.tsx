@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Star, ShoppingCart, Truck, RotateCcw, Shield, Check, Minus, Plus, ChevronLeft } from "lucide-react";
@@ -30,6 +30,7 @@ export default function ProductPage() {
     }
     
     localStorage.setItem("cart", JSON.stringify(cart));
+    window.dispatchEvent(new Event("cartUpdated"));
     setAddedToCart(true);
     setTimeout(() => setAddedToCart(false), 2000);
   };
@@ -63,7 +64,11 @@ export default function ProductPage() {
               </div>
               <div className="grid grid-cols-4 gap-3">
                 {product.images.map((img, index) => (
-                  <button key={index} onClick={() => setSelectedImage(index)} className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${selectedImage === index ? "border-blue-600" : "border-gray-200 hover:border-gray-300"}`}>
+                  <button 
+                    key={index} 
+                    onClick={() => setSelectedImage(index)} 
+                    className={`aspect-square rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${selectedImage === index ? "border-blue-600" : "border-gray-200 hover:border-gray-300"}`}
+                  >
                     <img src={img} alt={`${product.name} ${index + 1}`} className="w-full h-full object-cover" />
                   </button>
                 ))}
