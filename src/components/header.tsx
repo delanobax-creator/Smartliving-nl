@@ -1,13 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Globe, ShoppingCart } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const { language, setLanguage, t } = useLanguage();
+
+  useEffect(() => {
+    const updateCartCount = () => {
+      const saved = localStorage.getItem("cart");
+      if (saved) {
+        const cart = JSON.parse(saved);
+        const count = cart.reduce((sum: number, item: { quantity: number }) => sum + item.quantity, 0);
+        setCartCount(count);
+      } else {
+        setCartCount(0);
+      }
+    };
+
+    updateCartCount();
+    window.addEventListener("cartUpdated", updateCartCount);
+    window.addEventListener("storage", updateCartCount);
+
+    return () => {
+      window.removeEventListener("cartUpdated", updateCartCount);
+      window.removeEventListener("storage", updateCartCount);
+    };
+  }, []);
 
   const toggleLanguage = () => {
     setLanguage(language === "nl" ? "en" : "nl");
@@ -52,8 +75,13 @@ export default function Header() {
                 <span className="text-sm font-medium">{language.toUpperCase()}</span>
               </button>
 
-              <Link href="/cart" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <Link href="/cart" className="relative text-gray-700 hover:text-blue-600 transition-colors">
                 <ShoppingCart className="w-6 h-6" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                    {cartCount > 99 ? "99+" : cartCount}
+                  </span>
+                )}
               </Link>
 
               <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-gray-700">
