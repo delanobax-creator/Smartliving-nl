@@ -24,6 +24,18 @@ export const shopTranslations = {
       thermostats: "Thermostaten",
       locks: "Smart Locks",
       network: "Netwerk & WiFi"
+    },
+    productDetail: {
+      backToShop: "Terug naar shop",
+      notFound: "Product niet gevonden",
+      reviews: "reviews",
+      features: "Kenmerken:",
+      addToCart: "In Winkelwagen",
+      added: "Toegevoegd!",
+      freeShipping: "Gratis verzending vanaf €50",
+      returns: "30 dagen retourrecht",
+      warranty: "2 jaar garantie",
+      relatedProducts: "Gerelateerde producten"
     }
   },
   en: {
@@ -51,6 +63,18 @@ export const shopTranslations = {
       thermostats: "Thermostats",
       locks: "Smart Locks",
       network: "Network & WiFi"
+    },
+    productDetail: {
+      backToShop: "Back to shop",
+      notFound: "Product not found",
+      reviews: "reviews",
+      features: "Features:",
+      addToCart: "Add to Cart",
+      added: "Added!",
+      freeShipping: "Free shipping from €50",
+      returns: "30-day return policy",
+      warranty: "2-year warranty",
+      relatedProducts: "Related products"
     }
   }
 };
