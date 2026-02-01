@@ -4,22 +4,43 @@ import { useState, useMemo, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Star, Filter, X, ChevronDown } from "lucide-react";
-import { products, categories, brands } from "@/lib/products";
+import { products, brands } from "@/lib/products";
+import { useLanguage } from "@/lib/language-context";
+import { shopTranslations } from "@/lib/shop-translations";
 
 function ShopContent() {
+  const { language } = useLanguage();
+  const t = shopTranslations[language];
+  
   const searchParams = useSearchParams();
   const categoryFromUrl = searchParams.get("category");
   
   const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl || "all");
-  const [selectedBrand, setSelectedBrand] = useState("Alle Merken");
+  const [selectedBrand, setSelectedBrand] = useState(language === "nl" ? "Alle Merken" : "All Brands");
   const [sortBy, setSortBy] = useState("popular");
   const [showFilters, setShowFilters] = useState(false);
+
+  const translatedCategories = [
+    { id: "all", name: t.categories.all },
+    { id: "lighting", name: t.categories.lighting },
+    { id: "speakers", name: t.categories.speakers },
+    { id: "cameras", name: t.categories.cameras },
+    { id: "thermostats", name: t.categories.thermostats },
+    { id: "locks", name: t.categories.locks },
+    { id: "network", name: t.categories.network },
+  ];
+
+  const translatedBrands = [t.allBrands, ...brands.filter(b => b !== "Alle Merken" && b !== "All Brands")];
 
   useEffect(() => {
     if (categoryFromUrl) {
       setSelectedCategory(categoryFromUrl);
     }
   }, [categoryFromUrl]);
+
+  useEffect(() => {
+    setSelectedBrand(t.allBrands);
+  }, [language, t.allBrands]);
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
@@ -28,7 +49,7 @@ function ShopContent() {
       filtered = filtered.filter((p) => p.category === selectedCategory);
     }
 
-    if (selectedBrand !== "Alle Merken") {
+    if (selectedBrand !== t.allBrands) {
       filtered = filtered.filter((p) => p.brand === selectedBrand);
     }
 
@@ -47,14 +68,14 @@ function ShopContent() {
     }
 
     return filtered;
-  }, [selectedCategory, selectedBrand, sortBy]);
+  }, [selectedCategory, selectedBrand, sortBy, t.allBrands]);
 
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Shop</h1>
-          <p className="text-blue-200">Ontdek onze complete collectie smart home producten</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-2">{t.title}</h1>
+          <p className="text-blue-200">{t.subtitle}</p>
         </div>
       </div>
 
@@ -64,23 +85,23 @@ function ShopContent() {
           className="md:hidden flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm mb-4"
         >
           <Filter className="w-5 h-5" />
-          <span>Filters</span>
+          <span>{t.filters}</span>
         </button>
 
         <div className="flex flex-col md:flex-row gap-8">
           <aside className={`${showFilters ? "block" : "hidden"} md:block w-full md:w-64 flex-shrink-0`}>
             <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-lg">Filters</h2>
+                <h2 className="font-semibold text-lg">{t.filters}</h2>
                 <button onClick={() => setShowFilters(false)} className="md:hidden">
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
               <div className="mb-6">
-                <h3 className="font-medium text-gray-900 mb-3">Categorie</h3>
+                <h3 className="font-medium text-gray-900 mb-3">{t.category}</h3>
                 <div className="space-y-2">
-                  {categories.map((cat) => (
+                  {translatedCategories.map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategory(cat.id)}
@@ -97,9 +118,9 @@ function ShopContent() {
               </div>
 
               <div className="mb-6">
-                <h3 className="font-medium text-gray-900 mb-3">Merk</h3>
+                <h3 className="font-medium text-gray-900 mb-3">{t.brand}</h3>
                 <div className="space-y-2 max-h-48 overflow-y-auto">
-                  {brands.map((brand) => (
+                  {translatedBrands.map((brand) => (
                     <button
                       key={brand}
                       onClick={() => setSelectedBrand(brand)}
@@ -118,11 +139,11 @@ function ShopContent() {
               <button
                 onClick={() => {
                   setSelectedCategory("all");
-                  setSelectedBrand("Alle Merken");
+                  setSelectedBrand(t.allBrands);
                 }}
                 className="w-full text-sm text-blue-600 hover:text-blue-700 font-medium"
               >
-                Filters wissen
+                {t.clearFilters}
               </button>
             </div>
           </aside>
@@ -130,7 +151,7 @@ function ShopContent() {
           <div className="flex-1">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
               <p className="text-gray-600">
-                <span className="font-semibold text-gray-900">{filteredProducts.length}</span> producten gevonden
+                <span className="font-semibold text-gray-900">{filteredProducts.length}</span> {t.productsFound}
               </p>
 
               <div className="relative">
@@ -139,10 +160,10 @@ function ShopContent() {
                   onChange={(e) => setSortBy(e.target.value)}
                   className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-10 text-sm focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                 >
-                  <option value="popular">Meest populair</option>
-                  <option value="rating">Beste beoordeeld</option>
-                  <option value="price-low">Prijs laag - hoog</option>
-                  <option value="price-high">Prijs hoog - laag</option>
+                  <option value="popular">{t.sortPopular}</option>
+                  <option value="rating">{t.sortRating}</option>
+                  <option value="price-low">{t.sortPriceLow}</option>
+                  <option value="price-high">{t.sortPriceHigh}</option>
                 </select>
                 <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
               </div>
@@ -169,7 +190,7 @@ function ShopContent() {
                     <span className={`absolute top-3 right-3 text-xs font-semibold px-3 py-1 rounded-full ${
                       product.inStock ? "bg-green-500 text-white" : "bg-red-500 text-white"
                     }`}>
-                      {product.inStock ? "Op voorraad" : "Uitverkocht"}
+                      {product.inStock ? t.inStock : t.outOfStock}
                     </span>
                   </div>
 
@@ -202,15 +223,15 @@ function ShopContent() {
 
             {filteredProducts.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">Geen producten gevonden met deze filters.</p>
+                <p className="text-gray-500 text-lg">{t.noProducts}</p>
                 <button
                   onClick={() => {
                     setSelectedCategory("all");
-                    setSelectedBrand("Alle Merken");
+                    setSelectedBrand(t.allBrands);
                   }}
                   className="mt-4 text-blue-600 hover:text-blue-700 font-medium"
                 >
-                  Filters wissen
+                  {t.clearFilters}
                 </button>
               </div>
             )}
@@ -222,8 +243,11 @@ function ShopContent() {
 }
 
 export default function ShopPage() {
+  const { language } = useLanguage();
+  const t = shopTranslations[language];
+  
   return (
-    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">Laden...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">{t.loading}</div>}>
       <ShopContent />
     </Suspense>
   );
