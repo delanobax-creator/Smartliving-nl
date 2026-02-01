@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Mail, Phone, MapPin, MessageSquare, Send } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -39,8 +41,8 @@ export default function ContactPage() {
     <main className="min-h-screen bg-gray-50">
       <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact</h1>
-          <p className="text-xl text-blue-200">Heb je een vraag? Wij helpen je graag!</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.contact.title}</h1>
+          <p className="text-xl text-blue-200">{t.contact.subtitle}</p>
         </div>
       </section>
 
@@ -48,8 +50,8 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Neem Contact Op</h2>
-              <p className="text-gray-600 mb-8">Heb je een vraag over een product, je bestelling of heb je advies nodig? Ons team staat voor je klaar!</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.contact.getInTouch}</h2>
+              <p className="text-gray-600 mb-8">{t.contact.intro}</p>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -57,9 +59,9 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">E-mail</h3>
+                    <h3 className="font-semibold text-gray-900">{t.contact.email}</h3>
                     <p className="text-gray-600">info@smartliving.nl</p>
-                    <p className="text-sm text-gray-500">Reactie binnen 24 uur</p>
+                    <p className="text-sm text-gray-500">{t.contact.emailResponse}</p>
                   </div>
                 </div>
 
@@ -68,9 +70,9 @@ export default function ContactPage() {
                     <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Telefoon</h3>
+                    <h3 className="font-semibold text-gray-900">{t.contact.phone}</h3>
                     <p className="text-gray-600">+31 6 87 15 20 90</p>
-                    <p className="text-sm text-gray-500">Ma-Vr: 9:00 - 17:00</p>
+                    <p className="text-sm text-gray-500">{t.contact.phoneHours}</p>
                   </div>
                 </div>
 
@@ -79,9 +81,9 @@ export default function ContactPage() {
                     <MessageSquare className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">WhatsApp</h3>
+                    <h3 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">{t.contact.whatsapp}</h3>
                     <p className="text-gray-600">+31 6 87 15 20 90</p>
-                    <p className="text-sm text-gray-500">Snelste reactie! Klik om te chatten</p>
+                    <p className="text-sm text-gray-500">{t.contact.whatsappFast}</p>
                   </div>
                 </a>
 
@@ -90,43 +92,43 @@ export default function ContactPage() {
                     <MapPin className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Adres</h3>
+                    <h3 className="font-semibold text-gray-900">{t.contact.address}</h3>
                     <p className="text-gray-600">Amsterdam, Nederland</p>
-                    <p className="text-sm text-gray-500">Alleen online verkoop</p>
+                    <p className="text-sm text-gray-500">{t.contact.addressOnline}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-sm p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Stuur een Bericht</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.contact.sendMessage}</h2>
               
               {status === "success" ? (
                 <div className="text-center py-8">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Send className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Bericht Verzonden!</h3>
-                  <p className="text-gray-600">We nemen zo snel mogelijk contact met je op.</p>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{t.contact.successTitle}</h3>
+                  <p className="text-gray-600">{t.contact.successMessage}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Naam</label>
-                    <input type="text" id="name" name="name" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Je naam" />
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">{t.contact.name}</label>
+                    <input type="text" id="name" name="name" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder={t.contact.namePlaceholder} />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-                    <input type="email" id="email" name="email" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="je@email.nl" />
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">{t.contact.email}</label>
+                    <input type="email" id="email" name="email" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder={t.contact.emailPlaceholder} />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Bericht</label>
-                    <textarea id="message" name="message" rows={5} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Hoe kunnen we je helpen?" />
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">{t.contact.message}</label>
+                    <textarea id="message" name="message" rows={5} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder={t.contact.messagePlaceholder} />
                   </div>
                   <button type="submit" disabled={status === "loading"} className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50">
-                    {status === "loading" ? "Verzenden..." : "Verstuur Bericht"}
+                    {status === "loading" ? t.contact.sending : t.contact.send}
                   </button>
-                  {status === "error" && <p className="text-red-600 text-sm text-center">Er ging iets mis. Probeer het opnieuw of mail ons direct.</p>}
+                  {status === "error" && <p className="text-red-600 text-sm text-center">{t.contact.error}</p>}
                 </form>
               )}
             </div>
