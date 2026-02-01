@@ -54,11 +54,12 @@ export default function Header() {
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">SL</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">SmartLiving.nl</span>
+            <Link href="/" className="flex items-center">
+              <img 
+                src="https://eu.chat-img.sintra.ai/f9728c88-26b5-4c9d-9aad-be0c86ea1aee/cfe481f9-cba1-43fd-b087-4ffa1cf6cc8e/generated-image-2026-02-01.png" 
+                alt="SmartLiving.nl" 
+                className="h-12 w-auto"
+              />
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">
