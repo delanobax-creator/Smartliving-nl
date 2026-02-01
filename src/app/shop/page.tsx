@@ -7,10 +7,12 @@ import { Star, Filter, X, ChevronDown } from "lucide-react";
 import { products, brands } from "@/lib/products";
 import { useLanguage } from "@/lib/language-context";
 import { shopTranslations } from "@/lib/shop-translations";
+import { productTranslations } from "@/lib/product-translations";
 
 function ShopContent() {
   const { language } = useLanguage();
   const t = shopTranslations[language];
+  const pt = productTranslations[language];
   
   const searchParams = useSearchParams();
   const categoryFromUrl = searchParams.get("category");
@@ -22,12 +24,12 @@ function ShopContent() {
 
   const translatedCategories = [
     { id: "all", name: t.categories.all },
-    { id: "lighting", name: t.categories.lighting },
+    { id: "verlichting", name: t.categories.lighting },
     { id: "speakers", name: t.categories.speakers },
     { id: "cameras", name: t.categories.cameras },
-    { id: "thermostats", name: t.categories.thermostats },
+    { id: "thermostaten", name: t.categories.thermostats },
     { id: "locks", name: t.categories.locks },
-    { id: "network", name: t.categories.network },
+    { id: "netwerk", name: t.categories.network },
   ];
 
   const translatedBrands = [t.allBrands, ...brands.filter(b => b !== "Alle Merken" && b !== "All Brands")];
@@ -69,6 +71,21 @@ function ShopContent() {
 
     return filtered;
   }, [selectedCategory, selectedBrand, sortBy, t.allBrands]);
+
+  const getProductName = (productId: string, fallbackName: string) => {
+    const translation = pt[productId as keyof typeof pt];
+    if (translation && typeof translation === "object" && "name" in translation) {
+      return translation.name;
+    }
+    return fallbackName;
+  };
+
+  const getBadgeTranslation = (badge: string) => {
+    if (pt.badges && badge in pt.badges) {
+      return pt.badges[badge as keyof typeof pt.badges];
+    }
+    return badge;
+  };
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -179,12 +196,12 @@ function ShopContent() {
                   <div className="relative aspect-square overflow-hidden bg-gray-100">
                     <img
                       src={product.images[0]}
-                      alt={product.name}
+                      alt={getProductName(product.id, product.name)}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     {product.badge && (
                       <span className="absolute top-3 left-3 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                        {product.badge}
+                        {getBadgeTranslation(product.badge)}
                       </span>
                     )}
                     <span className={`absolute top-3 right-3 text-xs font-semibold px-3 py-1 rounded-full ${
@@ -197,7 +214,7 @@ function ShopContent() {
                   <div className="p-4">
                     <p className="text-xs text-blue-600 font-medium mb-1">{product.brand}</p>
                     <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                      {product.name}
+                      {getProductName(product.id, product.name)}
                     </h3>
 
                     <div className="flex items-center mb-3">
