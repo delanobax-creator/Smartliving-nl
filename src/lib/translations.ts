@@ -85,7 +85,27 @@ export const translations = {
       online: "Online - Direct antwoord",
       quickReplies: ["Verzendkosten", "Retourneren", "Product advies", "Installatie hulp"]
     },
-    whatsapp: "Chat met ons!"
+    whatsapp: "Chat met ons!",
+    about: {
+      title: "Over SmartLiving",
+      subtitle: "Wij maken smart home technologie toegankelijk en betaalbaar voor iedereen",
+      storyTitle: "Ons Verhaal",
+      storyP1: "SmartLiving.nl is ontstaan vanuit een simpele frustratie: waarom is smart home technologie zo duur? Wij geloven dat iedereen recht heeft op een slim, comfortabel en veilig huis - zonder de hoofdprijs te betalen.",
+      storyP2: "Als klein familiebedrijf selecteren wij zorgvuldig de beste smart home producten met de beste prijs-kwaliteitverhouding. Geen onnodige tussenschakels, geen dure merklicenties - gewoon goede producten voor een eerlijke prijs.",
+      storyP3: "Vanuit Nederland leveren wij snel en betrouwbaar. Met onze persoonlijke klantenservice staan we altijd voor je klaar - of je nu een vraag hebt over installatie of advies nodig hebt bij het kiezen van het juiste product.",
+      valuesTitle: "Waar Wij Voor Staan",
+      affordable: "Betaalbaar",
+      affordableDesc: "Smart home hoeft niet duur te zijn. Wij bieden kwaliteit voor een eerlijke prijs.",
+      simple: "Eenvoudig",
+      simpleDesc: "Plug & play producten die iedereen kan installeren. Geen technische kennis nodig.",
+      reliable: "Betrouwbaar",
+      reliableDesc: "Zorgvuldig geselecteerde producten met garantie en uitstekende support.",
+      personal: "Persoonlijk",
+      personalDesc: "Klein team, grote service. Wij kennen onze klanten en staan altijd klaar.",
+      ctaTitle: "Klaar om je huis slimmer te maken?",
+      ctaSubtitle: "Ontdek onze collectie en begin vandaag nog met besparen",
+      ctaButton: "Bekijk de Shop"
+    }
   },
   en: {
     nav: {
@@ -173,7 +193,27 @@ export const translations = {
       online: "Online - Instant reply",
       quickReplies: ["Shipping costs", "Returns", "Product advice", "Installation help"]
     },
-    whatsapp: "Chat with us!"
+    whatsapp: "Chat with us!",
+    about: {
+      title: "About SmartLiving",
+      subtitle: "We make smart home technology accessible and affordable for everyone",
+      storyTitle: "Our Story",
+      storyP1: "SmartLiving.nl was born from a simple frustration: why is smart home technology so expensive? We believe everyone deserves a smart, comfortable and safe home - without paying top dollar.",
+      storyP2: "As a small family business, we carefully select the best smart home products with the best value for money. No unnecessary middlemen, no expensive brand licenses - just good products at a fair price.",
+      storyP3: "From the Netherlands, we deliver fast and reliably. With our personal customer service, we're always here for you - whether you have a question about installation or need advice choosing the right product.",
+      valuesTitle: "What We Stand For",
+      affordable: "Affordable",
+      affordableDesc: "Smart home doesn't have to be expensive. We offer quality at a fair price.",
+      simple: "Simple",
+      simpleDesc: "Plug & play products anyone can install. No technical knowledge required.",
+      reliable: "Reliable",
+      reliableDesc: "Carefully selected products with warranty and excellent support.",
+      personal: "Personal",
+      personalDesc: "Small team, big service. We know our customers and are always ready to help.",
+      ctaTitle: "Ready to make your home smarter?",
+      ctaSubtitle: "Discover our collection and start saving today",
+      ctaButton: "View the Shop"
+    }
   }
 };
 
