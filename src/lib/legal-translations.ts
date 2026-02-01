@@ -8,55 +8,41 @@ export const legalTranslations = {
       section1Text: "SmartLiving.nl is een webshop gespecialiseerd in smart home producten en tech gadgets. Wij zijn verantwoordelijk voor de verwerking van je persoonsgegevens zoals beschreven in deze privacyverklaring.",
       section2Title: "2. Welke gegevens verzamelen wij?",
       section2Intro: "Wij verzamelen de volgende gegevens:",
-      section2Items: [
-        "Naam en adresgegevens",
-        "E-mailadres",
-        "Telefoonnummer (indien opgegeven)",
-        "Betaalgegevens",
-        "Bestelgeschiedenis",
-        "IP-adres en browsergegevens"
-      ],
+      section2Items: ["Naam en adresgegevens", "E-mailadres", "Telefoonnummer (indien opgegeven)", "Betaalgegevens", "Bestelgeschiedenis", "IP-adres en browsergegevens"],
       section3Title: "3. Waarvoor gebruiken wij je gegevens?",
-      section3Items: [
-        "Het verwerken en verzenden van je bestelling",
-        "Het versturen van orderbevestigingen en verzendinfo",
-        "Klantenservice en het beantwoorden van vragen",
-        "Het versturen van nieuwsbrieven (alleen met toestemming)",
-        "Het verbeteren van onze website en diensten",
-        "Het voldoen aan wettelijke verplichtingen"
-      ],
+      section3Items: ["Het verwerken en verzenden van je bestelling", "Het versturen van orderbevestigingen en verzendinfo", "Klantenservice en het beantwoorden van vragen", "Het versturen van nieuwsbrieven (alleen met toestemming)", "Het verbeteren van onze website en diensten", "Het voldoen aan wettelijke verplichtingen"],
       section4Title: "4. Hoe beveiligen wij je gegevens?",
       section4Text: "Wij nemen de bescherming van je gegevens serieus. Onze website is beveiligd met SSL-encryptie. We bewaren je gegevens op beveiligde servers en hebben passende technische en organisatorische maatregelen genomen om misbruik, verlies en onbevoegde toegang te voorkomen.",
       section5Title: "5. Je rechten",
       section5Intro: "Je hebt het recht om:",
-      section5Items: [
-        "Je gegevens in te zien",
-        "Je gegevens te laten corrigeren",
-        "Je gegevens te laten verwijderen",
-        "Bezwaar te maken tegen verwerking",
-        "Je gegevens over te dragen",
-        "Je toestemming in te trekken"
-      ],
+      section5Items: ["Je gegevens in te zien", "Je gegevens te laten corrigeren", "Je gegevens te laten verwijderen", "Bezwaar te maken tegen verwerking", "Je gegevens over te dragen", "Je toestemming in te trekken"],
       section6Title: "6. Contact",
       section6Text: "Heb je vragen over deze privacyverklaring of wil je gebruik maken van je rechten? Neem dan contact met ons op via"
     },
     shipping: {
       title: "Verzending & Levering",
-      subtitle: "Alles over bezorging van je bestelling",
-      section1Title: "Verzendkosten",
-      section1Items: [
-        "Gratis verzending bij bestellingen vanaf €50",
-        "Onder €50: €4,95 verzendkosten",
-        "Verzending naar Nederland en België"
-      ],
-      section2Title: "Levertijd",
-      section2Items: [
-        "Besteld voor 17:00 = dezelfde werkdag verzonden",
-        "Levertijd: 1-3 werkdagen",
-        "Track & trace per e-mail"
-      ],
-      section3Title: "Verzendpartners",
-      section3Text: "Wij werken samen met betrouwbare verzendpartners zoals PostNL en DHL om je pakket veilig en snel te bezorgen."
+      subtitle: "Snel en betrouwbaar bij je thuis",
+      shippingOptions: "Verzendopties",
+      freeShipping: "Gratis Verzending",
+      freeShippingDesc: "Bij bestellingen vanaf €50 - geen verzendkosten!",
+      standardShipping: "Standaard Verzending",
+      standardShippingDesc: "€4,95 voor bestellingen onder €50",
+      deliveryTimes: "Levertijden",
+      country: "Land",
+      deliveryTime: "Levertijd",
+      shippingCosts: "Verzendkosten",
+      netherlands: "Nederland",
+      belgium: "België",
+      businessDays13: "1-3 werkdagen",
+      businessDays24: "2-4 werkdagen",
+      freeFrom50: "Gratis vanaf €50",
+      orderNote: "Bestellingen geplaatst voor 17:00 op werkdagen worden dezelfde dag verzonden.",
+      trackTrace: "Track & Trace",
+      trackTraceText: "Zodra je bestelling verzonden is, ontvang je automatisch een e-mail met een track & trace code. Hiermee kun je je pakket realtime volgen.",
+      trackTraceItems: ["Automatische verzendbevestiging per e-mail", "Realtime tracking via PostNL of DHL", "Notificaties bij bezorging"],
+      questionsTitle: "Vragen over je verzending?",
+      questionsText: "Neem contact met ons op en we helpen je graag verder.",
+      contactButton: "Contact Opnemen"
     },
     returns: {
       title: "Retourneren",
@@ -64,16 +50,14 @@ export const legalTranslations = {
       section1Title: "30 dagen bedenktijd",
       section1Text: "Je hebt 30 dagen bedenktijd om je aankoop te retourneren. Het product moet ongebruikt en in originele verpakking zijn.",
       section2Title: "Hoe retourneren?",
-      section2Items: [
-        "Stuur een e-mail naar info@smartliving.nl met je ordernummer",
-        "Wij sturen je de retourinstructies",
-        "Verpak het product goed en stuur het terug",
-        "Na ontvangst storten wij het bedrag binnen 14 dagen terug"
-      ],
+      section2Items: ["Stuur een e-mail naar info@smartliving.nl met je ordernummer", "Wij sturen je de retourinstructies", "Verpak het product goed en stuur het terug", "Na ontvangst storten wij het bedrag binnen 14 dagen terug"],
       section3Title: "Retourkosten",
       section3Text: "De retourkosten zijn voor eigen rekening, tenzij het product defect is of wij een fout hebben gemaakt.",
       section4Title: "Defect product?",
-      section4Text: "Heb je een defect product ontvangen? Neem direct contact met ons op. Wij zorgen voor een gratis vervanging of terugbetaling."
+      section4Text: "Heb je een defect product ontvangen? Neem direct contact met ons op. Wij zorgen voor een gratis vervanging of terugbetaling.",
+      questionsTitle: "Hulp nodig bij retourneren?",
+      questionsText: "Ons team staat klaar om je te helpen.",
+      contactButton: "Contact Opnemen"
     },
     terms: {
       title: "Algemene Voorwaarden",
@@ -106,55 +90,41 @@ export const legalTranslations = {
       section1Text: "SmartLiving.nl is a webshop specialized in smart home products and tech gadgets. We are responsible for processing your personal data as described in this privacy statement.",
       section2Title: "2. What data do we collect?",
       section2Intro: "We collect the following data:",
-      section2Items: [
-        "Name and address details",
-        "Email address",
-        "Phone number (if provided)",
-        "Payment details",
-        "Order history",
-        "IP address and browser data"
-      ],
+      section2Items: ["Name and address details", "Email address", "Phone number (if provided)", "Payment details", "Order history", "IP address and browser data"],
       section3Title: "3. What do we use your data for?",
-      section3Items: [
-        "Processing and shipping your order",
-        "Sending order confirmations and shipping info",
-        "Customer service and answering questions",
-        "Sending newsletters (only with consent)",
-        "Improving our website and services",
-        "Complying with legal obligations"
-      ],
+      section3Items: ["Processing and shipping your order", "Sending order confirmations and shipping info", "Customer service and answering questions", "Sending newsletters (only with consent)", "Improving our website and services", "Complying with legal obligations"],
       section4Title: "4. How do we protect your data?",
       section4Text: "We take the protection of your data seriously. Our website is secured with SSL encryption. We store your data on secure servers and have taken appropriate technical and organizational measures to prevent misuse, loss and unauthorized access.",
       section5Title: "5. Your rights",
       section5Intro: "You have the right to:",
-      section5Items: [
-        "View your data",
-        "Have your data corrected",
-        "Have your data deleted",
-        "Object to processing",
-        "Transfer your data",
-        "Withdraw your consent"
-      ],
+      section5Items: ["View your data", "Have your data corrected", "Have your data deleted", "Object to processing", "Transfer your data", "Withdraw your consent"],
       section6Title: "6. Contact",
       section6Text: "Do you have questions about this privacy statement or do you want to exercise your rights? Contact us at"
     },
     shipping: {
       title: "Shipping & Delivery",
-      subtitle: "Everything about delivery of your order",
-      section1Title: "Shipping costs",
-      section1Items: [
-        "Free shipping on orders from €50",
-        "Under €50: €4.95 shipping costs",
-        "Shipping to the Netherlands and Belgium"
-      ],
-      section2Title: "Delivery time",
-      section2Items: [
-        "Ordered before 17:00 = shipped the same business day",
-        "Delivery time: 1-3 business days",
-        "Track & trace by email"
-      ],
-      section3Title: "Shipping partners",
-      section3Text: "We work with reliable shipping partners such as PostNL and DHL to deliver your package safely and quickly."
+      subtitle: "Fast and reliable delivery to your home",
+      shippingOptions: "Shipping Options",
+      freeShipping: "Free Shipping",
+      freeShippingDesc: "On orders from €50 - no shipping costs!",
+      standardShipping: "Standard Shipping",
+      standardShippingDesc: "€4.95 for orders under €50",
+      deliveryTimes: "Delivery Times",
+      country: "Country",
+      deliveryTime: "Delivery Time",
+      shippingCosts: "Shipping Costs",
+      netherlands: "Netherlands",
+      belgium: "Belgium",
+      businessDays13: "1-3 business days",
+      businessDays24: "2-4 business days",
+      freeFrom50: "Free from €50",
+      orderNote: "Orders placed before 17:00 on business days are shipped the same day.",
+      trackTrace: "Track & Trace",
+      trackTraceText: "Once your order has been shipped, you will automatically receive an email with a track & trace code. This allows you to track your package in real time.",
+      trackTraceItems: ["Automatic shipping confirmation by email", "Real-time tracking via PostNL or DHL", "Notifications upon delivery"],
+      questionsTitle: "Questions about your shipment?",
+      questionsText: "Contact us and we'll be happy to help.",
+      contactButton: "Contact Us"
     },
     returns: {
       title: "Returns",
@@ -162,16 +132,14 @@ export const legalTranslations = {
       section1Title: "30-day return policy",
       section1Text: "You have 30 days to return your purchase. The product must be unused and in original packaging.",
       section2Title: "How to return?",
-      section2Items: [
-        "Send an email to info@smartliving.nl with your order number",
-        "We will send you the return instructions",
-        "Pack the product well and send it back",
-        "After receipt, we will refund the amount within 14 days"
-      ],
+      section2Items: ["Send an email to info@smartliving.nl with your order number", "We will send you the return instructions", "Pack the product well and send it back", "After receipt, we will refund the amount within 14 days"],
       section3Title: "Return costs",
       section3Text: "Return costs are at your own expense, unless the product is defective or we made a mistake.",
       section4Title: "Defective product?",
-      section4Text: "Did you receive a defective product? Contact us immediately. We will arrange a free replacement or refund."
+      section4Text: "Did you receive a defective product? Contact us immediately. We will arrange a free replacement or refund.",
+      questionsTitle: "Need help with returns?",
+      questionsText: "Our team is ready to help you.",
+      contactButton: "Contact Us"
     },
     terms: {
       title: "Terms & Conditions",
