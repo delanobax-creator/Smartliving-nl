@@ -105,6 +105,31 @@ export const translations = {
       ctaTitle: "Klaar om je huis slimmer te maken?",
       ctaSubtitle: "Ontdek onze collectie en begin vandaag nog met besparen",
       ctaButton: "Bekijk de Shop"
+    },
+    contact: {
+      title: "Contact",
+      subtitle: "Heb je een vraag? Wij helpen je graag!",
+      getInTouch: "Neem Contact Op",
+      intro: "Heb je een vraag over een product, je bestelling of heb je advies nodig? Ons team staat voor je klaar!",
+      email: "E-mail",
+      emailResponse: "Reactie binnen 24 uur",
+      phone: "Telefoon",
+      phoneHours: "Ma-Vr: 9:00 - 17:00",
+      whatsapp: "WhatsApp",
+      whatsappFast: "Snelste reactie! Klik om te chatten",
+      address: "Adres",
+      addressOnline: "Alleen online verkoop",
+      sendMessage: "Stuur een Bericht",
+      name: "Naam",
+      namePlaceholder: "Je naam",
+      emailPlaceholder: "je@email.nl",
+      message: "Bericht",
+      messagePlaceholder: "Hoe kunnen we je helpen?",
+      send: "Verstuur Bericht",
+      sending: "Verzenden...",
+      successTitle: "Bericht Verzonden!",
+      successMessage: "We nemen zo snel mogelijk contact met je op.",
+      error: "Er ging iets mis. Probeer het opnieuw of mail ons direct."
     }
   },
   en: {
@@ -213,6 +238,31 @@ export const translations = {
       ctaTitle: "Ready to make your home smarter?",
       ctaSubtitle: "Discover our collection and start saving today",
       ctaButton: "View the Shop"
+    },
+    contact: {
+      title: "Contact",
+      subtitle: "Have a question? We're happy to help!",
+      getInTouch: "Get In Touch",
+      intro: "Have a question about a product, your order, or need advice? Our team is ready for you!",
+      email: "Email",
+      emailResponse: "Response within 24 hours",
+      phone: "Phone",
+      phoneHours: "Mon-Fri: 9:00 - 17:00",
+      whatsapp: "WhatsApp",
+      whatsappFast: "Fastest response! Click to chat",
+      address: "Address",
+      addressOnline: "Online sales only",
+      sendMessage: "Send a Message",
+      name: "Name",
+      namePlaceholder: "Your name",
+      emailPlaceholder: "you@email.com",
+      message: "Message",
+      messagePlaceholder: "How can we help you?",
+      send: "Send Message",
+      sending: "Sending...",
+      successTitle: "Message Sent!",
+      successMessage: "We'll get back to you as soon as possible.",
+      error: "Something went wrong. Please try again or email us directly."
     }
   }
 };
