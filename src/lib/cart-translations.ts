@@ -15,7 +15,33 @@ export const cartTranslations = {
     continueShopping: "Verder winkelen",
     securePayment: "Veilig betalen met iDEAL, PayPal, Creditcard",
     returns: "30 dagen retourrecht",
-    freeShippingNote: "Gratis verzending vanaf €50"
+    freeShippingNote: "Gratis verzending vanaf €50",
+    checkoutPage: {
+      backToCart: "Terug naar winkelwagen",
+      title: "Afrekenen",
+      contactDetails: "Contactgegevens",
+      email: "E-mailadres",
+      phone: "Telefoonnummer",
+      deliveryAddress: "Bezorgadres",
+      firstName: "Voornaam",
+      lastName: "Achternaam",
+      address: "Adres",
+      addressPlaceholder: "Straatnaam en huisnummer",
+      postalCode: "Postcode",
+      city: "Plaats",
+      paymentMethod: "Betaalmethode",
+      processing: "Bestelling verwerken...",
+      pay: "Betaal",
+      orderSummary: "Besteloverzicht",
+      quantity: "Aantal",
+      secureSSL: "Veilig betalen met SSL",
+      freeShipping: "Gratis verzending vanaf €50",
+      allPaymentMethods: "Alle betaalmethodes",
+      thankYou: "Bedankt voor je bestelling!",
+      confirmationEmail: "Je ontvangt binnen enkele minuten een bevestigingsmail met je ordergegevens en track & trace informatie.",
+      emptyCart: "Je winkelwagen is leeg",
+      goToShop: "Ga naar de shop"
+    }
   },
   en: {
     title: "Shopping Cart",
@@ -33,7 +59,33 @@ export const cartTranslations = {
     continueShopping: "Continue shopping",
     securePayment: "Secure payment with iDEAL, PayPal, Credit Card",
     returns: "30-day return policy",
-    freeShippingNote: "Free shipping from €50"
+    freeShippingNote: "Free shipping from €50",
+    checkoutPage: {
+      backToCart: "Back to cart",
+      title: "Checkout",
+      contactDetails: "Contact Details",
+      email: "Email address",
+      phone: "Phone number",
+      deliveryAddress: "Delivery Address",
+      firstName: "First name",
+      lastName: "Last name",
+      address: "Address",
+      addressPlaceholder: "Street name and house number",
+      postalCode: "Postal code",
+      city: "City",
+      paymentMethod: "Payment Method",
+      processing: "Processing order...",
+      pay: "Pay",
+      orderSummary: "Order Summary",
+      quantity: "Quantity",
+      secureSSL: "Secure payment with SSL",
+      freeShipping: "Free shipping from €50",
+      allPaymentMethods: "All payment methods",
+      thankYou: "Thank you for your order!",
+      confirmationEmail: "You will receive a confirmation email within a few minutes with your order details and track & trace information.",
+      emptyCart: "Your cart is empty",
+      goToShop: "Go to shop"
+    }
   }
 };
 
