@@ -1,0 +1,200 @@
+export const legalTranslations = {
+  nl: {
+    privacy: {
+      title: "Privacy Policy",
+      subtitle: "Hoe wij omgaan met je gegevens",
+      lastUpdated: "Laatst bijgewerkt:",
+      section1Title: "1. Wie zijn wij?",
+      section1Text: "SmartLiving.nl is een webshop gespecialiseerd in smart home producten en tech gadgets. Wij zijn verantwoordelijk voor de verwerking van je persoonsgegevens zoals beschreven in deze privacyverklaring.",
+      section2Title: "2. Welke gegevens verzamelen wij?",
+      section2Intro: "Wij verzamelen de volgende gegevens:",
+      section2Items: [
+        "Naam en adresgegevens",
+        "E-mailadres",
+        "Telefoonnummer (indien opgegeven)",
+        "Betaalgegevens",
+        "Bestelgeschiedenis",
+        "IP-adres en browsergegevens"
+      ],
+      section3Title: "3. Waarvoor gebruiken wij je gegevens?",
+      section3Items: [
+        "Het verwerken en verzenden van je bestelling",
+        "Het versturen van orderbevestigingen en verzendinfo",
+        "Klantenservice en het beantwoorden van vragen",
+        "Het versturen van nieuwsbrieven (alleen met toestemming)",
+        "Het verbeteren van onze website en diensten",
+        "Het voldoen aan wettelijke verplichtingen"
+      ],
+      section4Title: "4. Hoe beveiligen wij je gegevens?",
+      section4Text: "Wij nemen de bescherming van je gegevens serieus. Onze website is beveiligd met SSL-encryptie. We bewaren je gegevens op beveiligde servers en hebben passende technische en organisatorische maatregelen genomen om misbruik, verlies en onbevoegde toegang te voorkomen.",
+      section5Title: "5. Je rechten",
+      section5Intro: "Je hebt het recht om:",
+      section5Items: [
+        "Je gegevens in te zien",
+        "Je gegevens te laten corrigeren",
+        "Je gegevens te laten verwijderen",
+        "Bezwaar te maken tegen verwerking",
+        "Je gegevens over te dragen",
+        "Je toestemming in te trekken"
+      ],
+      section6Title: "6. Contact",
+      section6Text: "Heb je vragen over deze privacyverklaring of wil je gebruik maken van je rechten? Neem dan contact met ons op via"
+    },
+    shipping: {
+      title: "Verzending & Levering",
+      subtitle: "Alles over bezorging van je bestelling",
+      section1Title: "Verzendkosten",
+      section1Items: [
+        "Gratis verzending bij bestellingen vanaf €50",
+        "Onder €50: €4,95 verzendkosten",
+        "Verzending naar Nederland en België"
+      ],
+      section2Title: "Levertijd",
+      section2Items: [
+        "Besteld voor 17:00 = dezelfde werkdag verzonden",
+        "Levertijd: 1-3 werkdagen",
+        "Track & trace per e-mail"
+      ],
+      section3Title: "Verzendpartners",
+      section3Text: "Wij werken samen met betrouwbare verzendpartners zoals PostNL en DHL om je pakket veilig en snel te bezorgen."
+    },
+    returns: {
+      title: "Retourneren",
+      subtitle: "Niet tevreden? Geen probleem!",
+      section1Title: "30 dagen bedenktijd",
+      section1Text: "Je hebt 30 dagen bedenktijd om je aankoop te retourneren. Het product moet ongebruikt en in originele verpakking zijn.",
+      section2Title: "Hoe retourneren?",
+      section2Items: [
+        "Stuur een e-mail naar info@smartliving.nl met je ordernummer",
+        "Wij sturen je de retourinstructies",
+        "Verpak het product goed en stuur het terug",
+        "Na ontvangst storten wij het bedrag binnen 14 dagen terug"
+      ],
+      section3Title: "Retourkosten",
+      section3Text: "De retourkosten zijn voor eigen rekening, tenzij het product defect is of wij een fout hebben gemaakt.",
+      section4Title: "Defect product?",
+      section4Text: "Heb je een defect product ontvangen? Neem direct contact met ons op. Wij zorgen voor een gratis vervanging of terugbetaling."
+    },
+    terms: {
+      title: "Algemene Voorwaarden",
+      subtitle: "Onze spelregels",
+      lastUpdated: "Laatst bijgewerkt:",
+      section1Title: "1. Algemeen",
+      section1Text: "Deze algemene voorwaarden zijn van toepassing op alle bestellingen bij SmartLiving.nl. Door een bestelling te plaatsen, ga je akkoord met deze voorwaarden.",
+      section2Title: "2. Prijzen",
+      section2Text: "Alle prijzen zijn in euro's en inclusief BTW. Wij behouden ons het recht voor om prijzen te wijzigen. Voor bestaande bestellingen geldt altijd de prijs op het moment van bestellen.",
+      section3Title: "3. Bestellen",
+      section3Text: "Een overeenkomst komt tot stand op het moment dat je een orderbevestiging ontvangt per e-mail. Wij behouden ons het recht voor om bestellingen te weigeren.",
+      section4Title: "4. Betaling",
+      section4Text: "Wij accepteren iDEAL, PayPal, Creditcard en andere gangbare betaalmethoden. Je bestelling wordt pas verzonden na ontvangst van de betaling.",
+      section5Title: "5. Levering",
+      section5Text: "Wij streven ernaar om bestellingen binnen 1-3 werkdagen te leveren. De genoemde levertijden zijn indicatief en geen fatale termijnen.",
+      section6Title: "6. Garantie",
+      section6Text: "Al onze producten hebben minimaal 2 jaar garantie. Bij defecten binnen de garantieperiode zorgen wij voor reparatie of vervanging.",
+      section7Title: "7. Aansprakelijkheid",
+      section7Text: "Onze aansprakelijkheid is beperkt tot het aankoopbedrag van het product. Wij zijn niet aansprakelijk voor gevolgschade.",
+      section8Title: "8. Contact",
+      section8Text: "Voor vragen over deze voorwaarden kun je contact opnemen via"
+    }
+  },
+  en: {
+    privacy: {
+      title: "Privacy Policy",
+      subtitle: "How we handle your data",
+      lastUpdated: "Last updated:",
+      section1Title: "1. Who are we?",
+      section1Text: "SmartLiving.nl is a webshop specialized in smart home products and tech gadgets. We are responsible for processing your personal data as described in this privacy statement.",
+      section2Title: "2. What data do we collect?",
+      section2Intro: "We collect the following data:",
+      section2Items: [
+        "Name and address details",
+        "Email address",
+        "Phone number (if provided)",
+        "Payment details",
+        "Order history",
+        "IP address and browser data"
+      ],
+      section3Title: "3. What do we use your data for?",
+      section3Items: [
+        "Processing and shipping your order",
+        "Sending order confirmations and shipping info",
+        "Customer service and answering questions",
+        "Sending newsletters (only with consent)",
+        "Improving our website and services",
+        "Complying with legal obligations"
+      ],
+      section4Title: "4. How do we protect your data?",
+      section4Text: "We take the protection of your data seriously. Our website is secured with SSL encryption. We store your data on secure servers and have taken appropriate technical and organizational measures to prevent misuse, loss and unauthorized access.",
+      section5Title: "5. Your rights",
+      section5Intro: "You have the right to:",
+      section5Items: [
+        "View your data",
+        "Have your data corrected",
+        "Have your data deleted",
+        "Object to processing",
+        "Transfer your data",
+        "Withdraw your consent"
+      ],
+      section6Title: "6. Contact",
+      section6Text: "Do you have questions about this privacy statement or do you want to exercise your rights? Contact us at"
+    },
+    shipping: {
+      title: "Shipping & Delivery",
+      subtitle: "Everything about delivery of your order",
+      section1Title: "Shipping costs",
+      section1Items: [
+        "Free shipping on orders from €50",
+        "Under €50: €4.95 shipping costs",
+        "Shipping to the Netherlands and Belgium"
+      ],
+      section2Title: "Delivery time",
+      section2Items: [
+        "Ordered before 17:00 = shipped the same business day",
+        "Delivery time: 1-3 business days",
+        "Track & trace by email"
+      ],
+      section3Title: "Shipping partners",
+      section3Text: "We work with reliable shipping partners such as PostNL and DHL to deliver your package safely and quickly."
+    },
+    returns: {
+      title: "Returns",
+      subtitle: "Not satisfied? No problem!",
+      section1Title: "30-day return policy",
+      section1Text: "You have 30 days to return your purchase. The product must be unused and in original packaging.",
+      section2Title: "How to return?",
+      section2Items: [
+        "Send an email to info@smartliving.nl with your order number",
+        "We will send you the return instructions",
+        "Pack the product well and send it back",
+        "After receipt, we will refund the amount within 14 days"
+      ],
+      section3Title: "Return costs",
+      section3Text: "Return costs are at your own expense, unless the product is defective or we made a mistake.",
+      section4Title: "Defective product?",
+      section4Text: "Did you receive a defective product? Contact us immediately. We will arrange a free replacement or refund."
+    },
+    terms: {
+      title: "Terms & Conditions",
+      subtitle: "Our rules",
+      lastUpdated: "Last updated:",
+      section1Title: "1. General",
+      section1Text: "These general terms and conditions apply to all orders at SmartLiving.nl. By placing an order, you agree to these terms.",
+      section2Title: "2. Prices",
+      section2Text: "All prices are in euros and include VAT. We reserve the right to change prices. For existing orders, the price at the time of ordering always applies.",
+      section3Title: "3. Ordering",
+      section3Text: "An agreement is concluded when you receive an order confirmation by email. We reserve the right to refuse orders.",
+      section4Title: "4. Payment",
+      section4Text: "We accept iDEAL, PayPal, Credit Card and other common payment methods. Your order will only be shipped after receipt of payment.",
+      section5Title: "5. Delivery",
+      section5Text: "We aim to deliver orders within 1-3 business days. The stated delivery times are indicative and not strict deadlines.",
+      section6Title: "6. Warranty",
+      section6Text: "All our products have a minimum 2-year warranty. In case of defects within the warranty period, we will repair or replace the product.",
+      section7Title: "7. Liability",
+      section7Text: "Our liability is limited to the purchase price of the product. We are not liable for consequential damages.",
+      section8Title: "8. Contact",
+      section8Text: "For questions about these terms, please contact us at"
+    }
+  }
+};
+
+export type LegalLanguage = "nl" | "en";
