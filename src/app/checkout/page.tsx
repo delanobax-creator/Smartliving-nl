@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronLeft, CreditCard, Truck, Shield } from "lucide-react";
 import { products } from "@/lib/products";
+import { useLanguage } from "@/lib/language-context";
+import { cartTranslations } from "@/lib/cart-translations";
+import { productTranslations } from "@/lib/product-translations";
 
 interface CartItem {
   id: string;
@@ -11,6 +14,11 @@ interface CartItem {
 }
 
 export default function CheckoutPage() {
+  const { language } = useLanguage();
+  const t = cartTranslations[language];
+  const c = t.checkoutPage;
+  const pt = productTranslations[language];
+
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [formData, setFormData] = useState({
     email: "",
@@ -31,6 +39,14 @@ export default function CheckoutPage() {
     }
   }, []);
 
+  const getProductName = (productId: string, fallbackName: string) => {
+    const translation = pt[productId as keyof typeof pt];
+    if (translation && typeof translation === "object" && "name" in translation) {
+      return translation.name;
+    }
+    return fallbackName;
+  };
+
   const cartProducts = cartItems.map((item) => {
     const product = products.find((p) => p.id === item.id);
     return product ? { ...product, quantity: item.quantity } : null;
@@ -44,10 +60,8 @@ export default function CheckoutPage() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simuleer order verwerking
     await new Promise((resolve) => setTimeout(resolve, 2000));
     
-    // Clear cart
     localStorage.removeItem("cart");
     window.dispatchEvent(new Event("cartUpdated"));
     
@@ -65,12 +79,10 @@ export default function CheckoutPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Bedankt voor je bestelling!</h1>
-            <p className="text-gray-600 mb-6">
-              Je ontvangt binnen enkele minuten een bevestigingsmail met je ordergegevens en track & trace informatie.
-            </p>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">{c.thankYou}</h1>
+            <p className="text-gray-600 mb-6">{c.confirmationEmail}</p>
             <Link href="/shop" className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-              Verder winkelen
+              {t.continueShopping}
             </Link>
           </div>
         </div>
@@ -82,9 +94,9 @@ export default function CheckoutPage() {
     return (
       <main className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Je winkelwagen is leeg</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">{c.emptyCart}</h1>
           <Link href="/shop" className="text-blue-600 hover:text-blue-700 font-medium">
-            Ga naar de shop
+            {c.goToShop}
           </Link>
         </div>
       </main>
@@ -96,19 +108,19 @@ export default function CheckoutPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link href="/cart" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6">
           <ChevronLeft className="w-4 h-4 mr-1" />
-          Terug naar winkelwagen
+          {c.backToCart}
         </Link>
 
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">Afrekenen</h1>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">{c.title}</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Contactgegevens</h2>
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">{c.contactDetails}</h2>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">E-mailadres</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">{c.email}</label>
                     <input
                       type="email"
                       required
@@ -118,7 +130,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Telefoonnummer</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">{c.phone}</label>
                     <input
                       type="tel"
                       required
@@ -131,11 +143,11 @@ export default function CheckoutPage() {
               </div>
 
               <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Bezorgadres</h2>
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">{c.deliveryAddress}</h2>
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Voornaam</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">{c.firstName}</label>
                       <input
                         type="text"
                         required
@@ -145,7 +157,7 @@ export default function CheckoutPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Achternaam</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">{c.lastName}</label>
                       <input
                         type="text"
                         required
@@ -156,19 +168,19 @@ export default function CheckoutPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Adres</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">{c.address}</label>
                     <input
                       type="text"
                       required
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                      placeholder="Straatnaam en huisnummer"
+                      placeholder={c.addressPlaceholder}
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Postcode</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">{c.postalCode}</label>
                       <input
                         type="text"
                         required
@@ -178,7 +190,7 @@ export default function CheckoutPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Plaats</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">{c.city}</label>
                       <input
                         type="text"
                         required
@@ -192,7 +204,7 @@ export default function CheckoutPage() {
               </div>
 
               <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Betaalmethode</h2>
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">{c.paymentMethod}</h2>
                 <div className="space-y-3">
                   <label className="flex items-center p-3 border border-blue-600 rounded-lg bg-blue-50 cursor-pointer">
                     <input type="radio" name="payment" defaultChecked className="mr-3" />
@@ -214,22 +226,22 @@ export default function CheckoutPage() {
                 disabled={isSubmitting}
                 className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Bestelling verwerken..." : `Betaal €${total.toFixed(2)}`}
+                {isSubmitting ? c.processing : `${c.pay} €${total.toFixed(2)}`}
               </button>
             </form>
           </div>
 
           <div>
             <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Besteloverzicht</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">{c.orderSummary}</h2>
               
               <div className="space-y-4 mb-6">
                 {cartProducts.map((item) => (
                   <div key={item.id} className="flex gap-4">
-                    <img src={item.images[0]} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
+                    <img src={item.images[0]} alt={getProductName(item.id, item.name)} className="w-16 h-16 object-cover rounded-lg" />
                     <div className="flex-1">
-                      <h3 className="font-medium text-gray-900 text-sm">{item.name}</h3>
-                      <p className="text-sm text-gray-500">Aantal: {item.quantity}</p>
+                      <h3 className="font-medium text-gray-900 text-sm">{getProductName(item.id, item.name)}</h3>
+                      <p className="text-sm text-gray-500">{c.quantity}: {item.quantity}</p>
                     </div>
                     <span className="font-medium">€{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
@@ -238,15 +250,15 @@ export default function CheckoutPage() {
 
               <div className="border-t pt-4 space-y-2">
                 <div className="flex justify-between text-gray-600">
-                  <span>Subtotaal</span>
+                  <span>{t.subtotal}</span>
                   <span>€{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span>Verzending</span>
-                  <span>{shipping === 0 ? "Gratis" : `€${shipping.toFixed(2)}`}</span>
+                  <span>{t.shipping}</span>
+                  <span>{shipping === 0 ? t.free : `€${shipping.toFixed(2)}`}</span>
                 </div>
                 <div className="flex justify-between font-bold text-lg pt-2 border-t">
-                  <span>Totaal</span>
+                  <span>{t.total}</span>
                   <span>€{total.toFixed(2)}</span>
                 </div>
               </div>
@@ -254,15 +266,15 @@ export default function CheckoutPage() {
               <div className="mt-6 pt-6 border-t space-y-3 text-sm text-gray-600">
                 <div className="flex items-center">
                   <Shield className="w-5 h-5 mr-2 text-green-600" />
-                  Veilig betalen met SSL
+                  {c.secureSSL}
                 </div>
                 <div className="flex items-center">
                   <Truck className="w-5 h-5 mr-2 text-blue-600" />
-                  Gratis verzending vanaf €50
+                  {c.freeShipping}
                 </div>
                 <div className="flex items-center">
                   <CreditCard className="w-5 h-5 mr-2 text-blue-600" />
-                  Alle betaalmethodes
+                  {c.allPaymentMethods}
                 </div>
               </div>
             </div>
