@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Star, Filter, X, ChevronDown } from "lucide-react";
 import { products, categories, brands } from "@/lib/products";
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
   const categoryFromUrl = searchParams.get("category");
   
@@ -218,5 +218,13 @@ export default function ShopPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">Laden...</div>}>
+      <ShopContent />
+    </Suspense>
   );
 }
