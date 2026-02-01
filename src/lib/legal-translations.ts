@@ -70,24 +70,57 @@ export const legalTranslations = {
     },
     terms: {
       title: "Algemene Voorwaarden",
-      subtitle: "Onze spelregels",
+      subtitle: "De spelregels voor een prettige samenwerking",
       lastUpdated: "Laatst bijgewerkt:",
-      section1Title: "1. Algemeen",
-      section1Text: "Deze algemene voorwaarden zijn van toepassing op alle bestellingen bij SmartLiving.nl. Door een bestelling te plaatsen, ga je akkoord met deze voorwaarden.",
-      section2Title: "2. Prijzen",
-      section2Text: "Alle prijzen zijn in euro's en inclusief BTW. Wij behouden ons het recht voor om prijzen te wijzigen. Voor bestaande bestellingen geldt altijd de prijs op het moment van bestellen.",
-      section3Title: "3. Bestellen",
-      section3Text: "Een overeenkomst komt tot stand op het moment dat je een orderbevestiging ontvangt per e-mail. Wij behouden ons het recht voor om bestellingen te weigeren.",
-      section4Title: "4. Betaling",
-      section4Text: "Wij accepteren iDEAL, PayPal, Creditcard en andere gangbare betaalmethoden. Je bestelling wordt pas verzonden na ontvangst van de betaling.",
-      section5Title: "5. Levering",
-      section5Text: "Wij streven ernaar om bestellingen binnen 1-3 werkdagen te leveren. De genoemde levertijden zijn indicatief en geen fatale termijnen.",
-      section6Title: "6. Garantie",
-      section6Text: "Al onze producten hebben minimaal 2 jaar garantie. Bij defecten binnen de garantieperiode zorgen wij voor reparatie of vervanging.",
-      section7Title: "7. Aansprakelijkheid",
-      section7Text: "Onze aansprakelijkheid is beperkt tot het aankoopbedrag van het product. Wij zijn niet aansprakelijk voor gevolgschade.",
-      section8Title: "8. Contact",
-      section8Text: "Voor vragen over deze voorwaarden kun je contact opnemen via"
+      date: "Januari 2026",
+      article1Title: "Artikel 1 - Definities",
+      article1Items: [
+        { term: "SmartLiving:", definition: "De webshop SmartLiving.nl, gevestigd in Amsterdam." },
+        { term: "Klant:", definition: "De natuurlijke persoon die een overeenkomst aangaat met SmartLiving." },
+        { term: "Overeenkomst:", definition: "De koopovereenkomst tussen SmartLiving en de Klant." },
+        { term: "Product:", definition: "Het artikel dat door SmartLiving wordt aangeboden." }
+      ],
+      article2Title: "Artikel 2 - Bestellingen",
+      article2Items: [
+        "Een overeenkomst komt tot stand op het moment dat je een orderbevestiging ontvangt.",
+        "SmartLiving behoudt zich het recht voor om bestellingen te weigeren of aanvullende informatie op te vragen.",
+        "Prijzen zijn inclusief BTW, exclusief verzendkosten (tenzij anders vermeld).",
+        "Kennelijke fouten in prijzen of productomschrijvingen zijn niet bindend."
+      ],
+      article3Title: "Artikel 3 - Betaling",
+      article3Items: [
+        "Betaling geschiedt via iDEAL, PayPal, Creditcard of andere aangeboden betaalmethoden.",
+        "Je bestelling wordt pas verzonden na ontvangst van de betaling.",
+        "Bij niet-tijdige betaling behouden wij ons het recht voor de bestelling te annuleren."
+      ],
+      article4Title: "Artikel 4 - Levering",
+      article4Items: [
+        "Levertijden zijn indicatief en geen fatale termijnen.",
+        "Levering vindt plaats op het door jou opgegeven adres.",
+        "Het risico van beschadiging en/of vermissing gaat over op de klant bij aflevering.",
+        "Bij overschrijding van de levertijd met meer dan 30 dagen heb je recht op annulering."
+      ],
+      article5Title: "Artikel 5 - Herroepingsrecht",
+      article5Items: [
+        "Je hebt 30 dagen bedenktijd na ontvangst van het product.",
+        "Tijdens deze periode mag je het product uitpakken en bekijken zoals je dat in een winkel zou doen.",
+        "Retourneren kan alleen als het product ongebruikt is en in originele verpakking.",
+        "Retourkosten zijn voor rekening van de klant, tenzij het product defect of verkeerd geleverd is.",
+        "Terugbetaling vindt plaats binnen 14 dagen na ontvangst van de retour."
+      ],
+      article6Title: "Artikel 6 - Garantie",
+      article6Items: [
+        "Op alle producten geldt minimaal 2 jaar wettelijke garantie.",
+        "Garantie geldt niet bij schade door verkeerd gebruik, ongelukken of normale slijtage.",
+        "Bij een geldig garantieclaim repareren of vervangen wij het product kosteloos."
+      ],
+      article7Title: "Artikel 7 - Contact & Klachten",
+      article7Intro: "Heb je een klacht of vraag? Neem contact met ons op via:",
+      article7Email: "E-mail:",
+      article7Phone: "Telefoon:",
+      article7Outro: "Wij streven ernaar om klachten binnen 14 dagen af te handelen.",
+      article8Title: "Artikel 8 - Toepasselijk Recht",
+      article8Text: "Op alle overeenkomsten is Nederlands recht van toepassing. Geschillen worden voorgelegd aan de bevoegde rechter in Amsterdam."
     }
   },
   en: {
@@ -161,26 +194,9 @@ export const legalTranslations = {
     },
     terms: {
       title: "Terms & Conditions",
-      subtitle: "Our rules",
+      subtitle: "The rules for a pleasant collaboration",
       lastUpdated: "Last updated:",
-      section1Title: "1. General",
-      section1Text: "These general terms and conditions apply to all orders at SmartLiving.nl. By placing an order, you agree to these terms.",
-      section2Title: "2. Prices",
-      section2Text: "All prices are in euros and include VAT. We reserve the right to change prices. For existing orders, the price at the time of ordering always applies.",
-      section3Title: "3. Ordering",
-      section3Text: "An agreement is concluded when you receive an order confirmation by email. We reserve the right to refuse orders.",
-      section4Title: "4. Payment",
-      section4Text: "We accept iDEAL, PayPal, Credit Card and other common payment methods. Your order will only be shipped after receipt of payment.",
-      section5Title: "5. Delivery",
-      section5Text: "We aim to deliver orders within 1-3 business days. The stated delivery times are indicative and not strict deadlines.",
-      section6Title: "6. Warranty",
-      section6Text: "All our products have a minimum 2-year warranty. In case of defects within the warranty period, we will repair or replace the product.",
-      section7Title: "7. Liability",
-      section7Text: "Our liability is limited to the purchase price of the product. We are not liable for consequential damages.",
-      section8Title: "8. Contact",
-      section8Text: "For questions about these terms, please contact us at"
-    }
-  }
-};
-
-export type LegalLanguage = "nl" | "en";
+      date: "January 2026",
+      article1Title: "Article 1 - Definitions",
+      article1Items: [
+        { term: "SmartLiving:", definition: "The webshop
